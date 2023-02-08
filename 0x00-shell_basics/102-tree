@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir -p /welcome?\U+2215/welcome?\U+2215to/welcome?\U+2215to?\U+2215school
+mkdir -p /welcome/ welcome/to/ welcome/to/school

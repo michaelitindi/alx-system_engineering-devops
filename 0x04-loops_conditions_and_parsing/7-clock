@@ -46,7 +46,7 @@ do
                 echo "Hour: 12"
                 ;;
              *)
-		 echo $i
+		echo $((i%60))
 	 esac
 	i=$((i+1))
 

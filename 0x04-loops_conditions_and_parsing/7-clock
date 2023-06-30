@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+i=1
+while [ $i -le 779 ]
+do
+	case $i in
+	     1)
+		echo "Hour: 0"
+		echo "1"
+		;;
+
+             60)
+		echo "Hour: 1"
+                ;;
+            120)
+		echo "Hour: 2"
+                ;;
+	    180)
+                echo "Hour: 3"
+                ;;
+	    240)
+                echo "Hour: 4"
+                ;;
+            300)
+                echo "Hour: 5"
+                ;;
+            360)
+                echo "Hour: 6"
+                ;;
+            420)
+                echo "Hour: 7"
+                ;;
+	    480)
+                echo "Hour: 8"
+                ;;
+	    540)
+                echo "Hour: 9"
+                ;;
+	    600)
+                echo "Hour: 10"
+                ;;
+	    660)
+                echo "Hour: 11"
+                ;;
+            720)
+                echo "Hour: 12"
+                ;;
+             *)
+		 echo $i
+	 esac
+	i=$((i+1))
+
+done

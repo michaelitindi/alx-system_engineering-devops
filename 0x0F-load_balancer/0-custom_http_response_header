@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# HTTP response contains a custom header
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y nginx
+sudo service nginx start
+header_line="add_header X-Served-By \$hostname;"
+server_block_file="/etc/nginx/sites-available/default"
+grep -q "$header_line" $server_block_file || sudo sed -i "/server_name _;/a \ \ \ \ $header_line" $server_block_file
+sudo service nginx reload

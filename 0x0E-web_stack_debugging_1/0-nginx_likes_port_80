@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 #listening on port 80 of all the server’s active IPv4 IPs
-apt-get -y update
-apt-get -y install nginx
-if command -v ufw &> /dev/null; then
-    ufw allow 'Nginx HTTP'
-fi
-if grep -q 'listen 8080;' /etc/nginx/sites-enabled/default; then
-    sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-else
-    echo "Nginx was not set to listen on port 8080, please verify the configuration."
-fi
-nginx -t
-if command -v service &> /dev/null; then
-    service nginx start
-else
-    nginx
-fi
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+service nginx restart

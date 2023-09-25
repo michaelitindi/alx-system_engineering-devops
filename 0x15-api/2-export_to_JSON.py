@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-""" export data in the CSV format. """
+""" export data in json formaat"""
 
-import csv
+import json
 import requests
 import sys
-
 
 
 if __name__ == "__main__":
@@ -21,12 +20,13 @@ if __name__ == "__main__":
         sys.exit(1)
     user = response.json()
     todos = requests.get(todos_url).json()
-    with open("{}.csv".format(employee_id), 'w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
-        for task in todos:
-            csv_writer.writerow([
-                employee_id,
-                user.get('username'),
-                task.get('completed'),
-                task.get('title')
-            ])
+    tasks_list = []
+    for task in todos:
+        tasks_list.append({
+            "task": task.get('title'),
+            "completed": task.get('completed'),
+            "username": user.get('username')
+        })
+
+    with open("{}.json".format(employee_id), 'w') as json_file:
+        json.dump({employee_id: tasks_list}, json_file)

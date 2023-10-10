@@ -3,6 +3,7 @@
 
 import requests
 
+
 def number_of_subscribers(subreddit):
     """ Function to return no of subscribers """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
@@ -11,5 +12,3 @@ def number_of_subscribers(subreddit):
     if response.status_code >= 300:
         return 0
     return response.json().get("data").get("subscribers")
-        
-     
